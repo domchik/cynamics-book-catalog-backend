@@ -9,7 +9,7 @@ describe('BookController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [BookController],
-      providers: [BookService, PrismaService]
+      providers: [BookService, PrismaService],
     }).compile();
 
     controller = module.get<BookController>(BookController);

@@ -8,12 +8,13 @@ import { BookController } from './book/book.controller';
 @Module({
   imports: [],
   controllers: [BookController],
-  providers: [ PrismaService, BookService,
+  providers: [
+    PrismaService,
+    BookService,
     {
       provide: APP_INTERCEPTOR,
       useClass: LoggingInterceptor,
     },
-
   ],
 })
 export class AppModule {}

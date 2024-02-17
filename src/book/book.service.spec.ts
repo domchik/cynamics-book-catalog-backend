@@ -43,8 +43,6 @@ describe('BookService', () => {
       const result = await service.book({ id: 1 });
       expect(result).toEqual(bookData);
     });
-
-
   });
 
   describe('books', () => {
@@ -60,8 +58,6 @@ describe('BookService', () => {
     });
   });
 
-
-
   describe('createBook', () => {
     it('should create a new book', async () => {
       const newBookData = { title: 'New Book', author: 'New Author' };
@@ -71,7 +67,6 @@ describe('BookService', () => {
       const result = await service.createBook(newBookData);
       expect(result).toEqual(expectedResult);
     });
-
   });
 
   describe('updateBook', () => {
@@ -91,7 +86,7 @@ describe('BookService', () => {
       mockPrismaService.book.update.mockRejectedValue(new NotFoundException());
 
       await expect(
-        service.updateBook({ where: { id: 1 }, data: {} })
+        service.updateBook({ where: { id: 1 }, data: {} }),
       ).rejects.toThrow(NotFoundException);
     });
   });
@@ -108,8 +103,9 @@ describe('BookService', () => {
     it('should throw NotFoundException if the book is not found', async () => {
       mockPrismaService.book.delete.mockRejectedValue(new NotFoundException());
 
-      await expect(service.deleteBook({ id: 1 })).rejects.toThrow(NotFoundException);
+      await expect(service.deleteBook({ id: 1 })).rejects.toThrow(
+        NotFoundException,
+      );
     });
   });
-
 });
